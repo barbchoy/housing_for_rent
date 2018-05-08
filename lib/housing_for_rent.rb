@@ -1,5 +1,2 @@
-require "housing_for_rent/version"
-
-module HousingForRent
-  # Your code goes here...
-end
+require_relative "./housing_for_rent/version"
+require_relative "./housing_for_rent/cli"

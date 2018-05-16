@@ -17,13 +17,10 @@ class HousingForRent::CLI
     input = nil
     while input != "exit"
       puts "Enter the number you'd like more info on or or type list to see the list or type exit:"
-      input = gets.strip
-      case input
-      when "1"
-        puts "More info on deal 1..."
-      when "2"
-        puts "More info on deal 2..."
-      when "list"
+      input = gets.strip.downcase
+      if input.to_i > 0 && input.to_i <= @houses.size
+        puts @houses[input.to_i-1]
+      elsif input == "list"
         list_housing
       else
         puts "Not sure what you want. Type list or exit."

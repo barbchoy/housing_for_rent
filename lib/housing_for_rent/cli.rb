@@ -11,6 +11,10 @@ class HousingForRent::CLI
   def list_housing
     puts "Housing For Rent"
     @houses = HousingForRent::House.today
+    @houses.each.with_index(1) do |house,i|
+      puts "#{i}. #{house.description} - #{house.bedrooms} - #{house.size} - #{house.price} - #{house.location}"
+    end
+
   end
 
   def menu

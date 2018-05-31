@@ -14,14 +14,17 @@ class HousingForRent::Scraper
   end
 
   def self.scrape_houses_index
-    docs = self.get_page.css("div.resultsBands last")
-    puts docs
+    self.get_page.css("div.resultsBands")
   end
 
   def self.make_house
+    houses = []
     scrape_houses_index.each do |h|
-      HousingForRent::House.new_from_index_page(h)
+      puts h
+      puts " "
+      houses << HousingForRent::House.new_from_index_page(h)
     end
+    houses
   end
 
 

@@ -10,10 +10,12 @@ class HousingForRent::House
 
     houses = []
 
-    doc = Nokogiri::HTML(open("http://www.woot.com/"))
-    binding.pry
+    doc = Nokogiri::HTML(open("https://sfbay.craigslist.org/d/apts-housing-for-rent/search/apa"))
+
     puts doc
     houses
 
   end
+
+
 end

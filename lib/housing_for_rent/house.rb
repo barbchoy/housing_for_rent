@@ -4,7 +4,7 @@ class HousingForRent::House
 
   @@all = []
 
-  def self.today
+  def self.today_houses
     HousingForRent::Scraper.make_house
   end
 

@@ -14,15 +14,18 @@ class HousingForRent::Scraper
   end
 
   def self.scrape_houses_index
-    self.get_page.css("div.resultsBands")
+    self.get_page.css("section").css("#leftColumn").css(".resultsBands")
   end
 
   def self.make_house
     houses = []
     scrape_houses_index.each do |h|
+      price = h.css(".price").text
+      bedroom = h.css(".beds").text
+      houses << HousingForRent::House.new(nil, bedroom, price, nil, nil)
       puts h
       puts " "
-      houses << HousingForRent::House.new_from_index_page(h)
+      # houses << HousingForRent::House.new_from_index_page(h)
     end
     houses
   end

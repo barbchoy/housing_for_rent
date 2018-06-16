@@ -1,13 +1,13 @@
 class HousingForRent::Scraper
 
-  def self.scrape_houses
-    #This method is redundant. Remove later.
-    houses = []
-    doc = Nokogiri::HTML(open("http://www.homefinder.com/zip-code/94568/rentals/sort-by-siteAddedDate-desc/"))
-    puts doc
-    houses
-
-  end
+  # def self.scrape_houses
+  #   #This method is redundant. Remove later.
+  #   houses = []
+  #   doc = Nokogiri::HTML(open("http://www.homefinder.com/zip-code/94568/rentals/sort-by-siteAddedDate-desc/"))
+  #   puts doc
+  #   houses
+  #
+  # end
 
   def self.get_page
     doc = Nokogiri::HTML(open("http://www.homefinder.com/zip-code/94568/rentals/sort-by-siteAddedDate-desc/"))
@@ -22,7 +22,8 @@ class HousingForRent::Scraper
     scrape_houses_index.each do |h|
       price = h.css(".price").text
       bedroom = h.css(".beds").text
-      houses << HousingForRent::House.new(nil, bedroom, price, nil, nil)
+      location = h.css(".cityStZip").text
+      houses << HousingForRent::House.new(nil, bedroom, price, nil, location)
       puts h
       puts " "
       # houses << HousingForRent::House.new_from_index_page(h)

@@ -12,8 +12,10 @@ class HousingForRent::CLI
     puts "Housing For Rent"
     @houses = HousingForRent::House.today_houses
     @houses.each.with_index(1) do |house, i|
-      puts "#{i}. #{house.description} - #{house.bedrooms} - #{house.size} - #{house.price} - #{house.location}"
+      #puts "#{i}. #{house.description} - #{house.bedrooms} - #{house.size} - #{house.price} - #{house.location}"
+      puts "#{i}. #{house.location}  #{house.price} - #{house.bedrooms}"
     end
+    puts " "
 
   end
 

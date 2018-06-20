@@ -22,7 +22,7 @@ class HousingForRent::Scraper
     scrape_houses_index.each do |h|
       price = h.css(".price").text
       bedroom = h.css(".beds").text
-      location = h.css(".cityStZip").text
+      location = h.css(".address").text
       houses << HousingForRent::House.new(nil, bedroom, price, nil, location)
       puts h
       puts " "
